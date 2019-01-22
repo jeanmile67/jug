@@ -1,8 +1,8 @@
 package model
 
-class Pokemon (
-  val id: Int,
-  val name: String,
-  val emoji: String,
-  val level: Int
+case class Pokemon (
+  id: Int,
+  name: String,
+  emoji: String,
+  level: Int
 ) extends Animal

@@ -1,7 +1,7 @@
 package model
 
-class Monster(
-  val id: Int,
-  val name: String,
-  val emoji: String
+case class Monster(
+  id: Int,
+  name: String,
+  emoji: String
 ) extends Animal
