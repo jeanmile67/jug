@@ -10,8 +10,8 @@ object AnimalRepository {
 
   private val razowski = Monster(4, "Bob Razowski", "\uD83D\uDC41️")
   private val sullivan = Monster(5, "Jacques Sullivan", "\uD83D\uDC7E")
-  val monsters = List(razowski, sullivan)
-  val animals: List[Animal] = pokemons ++ monsters
+  private val monsters = List(razowski, sullivan)
+  private val animals: List[Animal] = pokemons ++ monsters
 
   def find : List[Animal] = animals
 }
