@@ -2,7 +2,9 @@ package main
 
 import model.Animal
 import repository.AnimalRepository
+import cats.effect.IO
 
+import scala.collection.immutable
 import scala.io.StdIn._
 import scala.util.{Random, Try}
 
@@ -10,15 +12,19 @@ object main {
 
   def parseInt(value: String): Option[Int] = Try(value.toInt).toOption
 
+  def putStrlLn(value: String): IO[Unit] = IO(println(value))
+  val readLn: IO[String] = IO(scala.io.StdIn.readLine)
+
+  def startGame: IO[Unit] = for {
+    _ <- putStrlLn("Quel est votre nom ?")
+    name <- readLn
+    _ <- putStrlLn("Hello, " + name + ", bienvenue dans la partie!")
+  } yield ()
+
   def main(args: Array[String]) {
     val animals: List[Animal] = AnimalRepository.find
 
-    println("Quel est votre nom ?")
-
-    val name: String = readLine()
-
-    println("Hello, " + name + ", bienvenue dans la partie!")
-
+    val name = "tmp"
     var exec = true
     while (exec) {
       val response = Random.shuffle(animals).head
